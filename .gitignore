@@ -1,0 +1,5 @@
+*.elf
+*.o
+*.map
+./csr_test/test/*.elf
+./csr_test_cpp/test/*.elf

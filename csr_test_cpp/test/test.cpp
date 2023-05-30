@@ -1,6 +1,6 @@
 
 #include <stdio.h>
-#include "fpga_csrs.h"
+#include "test_csrs.h"
 
 extern "C" void __cxa_pure_virtual() { while (1); }
 
@@ -19,15 +19,19 @@ void reg_print_all()
 int main()
 {
     FPGA.init(get_base());
-    FPGA.write(0,0x1234567);
-    FPGA.print(0);
-    FPGA.write(0x14,3);
-    FPGA.print(0x14);
+    FPGA.trace_switch(true);
+    reg_write(FPGA,ID,0x1234567);
+    reg_print(FPGA,ID);
+    reg_write(FPGA,SR,3);
+    reg_print(FPGA,SR);
+    reg_decant(FPGA,SR,wr);
+    reg_decant(FPGA,SR,rd);
 
+    Dagger.trace_switch(true);
     Dagger.print(0);
     Dagger.write(0xaabbccdd, 0x0102);
     Dagger.print(0xaabbccdd);
     Dagger.print(0x11223344);
-    
+
     return 0;
 }

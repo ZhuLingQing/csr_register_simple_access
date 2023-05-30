@@ -32,7 +32,7 @@ void _reg_composeModify(int label, reg_data_t value, reg_data_t mask);
 #define reg_read(label) _reg_read(label##_OFFSET)
 
 // print register: value from label and only print the field.
-#define reg_decant_f(label, field)                                                     \
+#define reg_decant(label, field)                                                       \
     do                                                                                 \
     {                                                                                  \
         typedef_##label##_t __##label;                                                 \
@@ -41,7 +41,7 @@ void _reg_composeModify(int label, reg_data_t value, reg_data_t mask);
     } while (0)
 
 // print register: value from label and only print the whole register.
-#define reg_decant(label)                          \
+#define reg_print(label)                           \
     do                                             \
     {                                              \
         reg_data_t __##label = reg_read(label);    \

@@ -1,5 +1,0 @@
-*.elf
-*.o
-*.map
-./test/*.elf
-
